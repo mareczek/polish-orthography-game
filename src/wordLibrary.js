@@ -1,6 +1,5 @@
 // Pełna lista słów z "rz" i "ż" wraz z zasadami ortograficznymi
-const allWordsList = [
-  // Słowa z "rz"
+const rzWordsList = [
   { word: "rzecz", correctAnswer: "rz", rule: "RZ piszemy po spółgłoskach: p, b, t, d, k, g, ch, j, w." },
   { word: "rzeka", correctAnswer: "rz", rule: "RZ piszemy, gdy wymienia się na 'r' w innych formach wyrazu lub wyrazach pokrewnych." },
   { word: "rzut", correctAnswer: "rz", rule: "RZ piszemy, gdy wymienia się na 'r' w innych formach wyrazu lub wyrazach pokrewnych." },
@@ -46,6 +45,10 @@ const allWordsList = [
   { word: "powtórzyć", correctAnswer: "rz", rule: "RZ piszemy, gdy wymienia się na 'r' w innych formach wyrazu lub wyrazach pokrewnych (powtórzyć - powtór)." },
   { word: "przerwa", correctAnswer: "rz", rule: "RZ piszemy, gdy wymienia się na 'r' w innych formach wyrazu lub wyrazach pokrewnych (przerwa - przerwać)." },
   { word: "spojrzenie", correctAnswer: "rz", rule: "RZ piszemy, gdy wymienia się na 'r' w innych formach wyrazu lub wyrazach pokrewnych (spojrzenie - spozierać)." },
+]
+
+const zWordsList = [
+  // Słowa z "rz"
   { word: "żebro", correctAnswer: "ż", rule: "Ż piszemy w wielu wyrazach, których pisownię należy zapamiętać." },
   { word: "żeton", correctAnswer: "ż", rule: "Ż piszemy w wielu wyrazach, których pisownię należy zapamiętać." },
   { word: "żeglować", correctAnswer: "ż", rule: "Ż piszemy w wielu wyrazach, których pisownię należy zapamiętać." },
@@ -95,4 +98,4 @@ const allWordsList = [
   { word: "jeży", correctAnswer: "ż", rule: "Ż piszemy w zakończeniach przymiotników -eży." }
 ];
 
-export default allWordsList;
+export { rzWordsList, zWordsList };

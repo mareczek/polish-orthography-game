@@ -1,74 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import allWordsList from '../wordLibrary';
-
-// Komponent animacji fajerwerków
-const Fireworks = () => {
-  const [fireworks, setFireworks] = useState([]);
-
-  // Funkcja tworząca nowy fajerwerk
-  const createFirework = () => {
-    const colors = [
-      '#FF0000', // czerwony
-      '#00FF00', // zielony
-      '#0000FF', // niebieski
-      '#FFFF00', // żółty
-      '#FF00FF', // magenta
-      '#00FFFF', // cyan
-      '#FFA500', // pomarańczowy
-      '#800080', // fioletowy
-      '#FFC0CB', // różowy
-      '#FFD700'  // złoty
-    ];
-
-    return {
-      id: Math.random(),
-      left: Math.random() * 100,
-      top: Math.random() * 70,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      size: 3 + Math.random() * 5,
-      delay: Math.random() * 2
-    };
-  };
-
-  useEffect(() => {
-    // Tworzymy początkowe fajerwerki
-    const initialFireworks = Array.from({ length: 20 }, createFirework);
-    setFireworks(initialFireworks);
-
-    // Dodajemy nowe fajerwerki co jakiś czas
-    const interval = setInterval(() => {
-      setFireworks(prev => {
-        // Usuwamy stare fajerwerki, jeśli jest ich za dużo
-        const filtered = prev.length > 30 ? prev.slice(prev.length - 30) : prev;
-        return [...filtered, createFirework()];
-      });
-    }, 300);
-
-    // Czyścimy po sobie
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="fixed inset-0 pointer-events-none z-50">
-      {fireworks.map(firework => (
-        <div
-          key={firework.id}
-          className="firework"
-          style={{
-            left: `${firework.left}%`,
-            top: `${firework.top}%`,
-            '--color': firework.color,
-            '--size': `${firework.size}px`,
-            animationDelay: `${firework.delay}s`
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+import { rzWordsList, zWordsList } from '../wordLibrary';
+import Fireworks from './Fireworks';
 
 const PolishOrthographyGame = () => {
-  // Stan aplikacji
   const [words, setWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -81,18 +15,23 @@ const PolishOrthographyGame = () => {
   const [rule, setRule] = useState("");
   const [incorrectWords, setIncorrectWords] = useState([]);
   const [showFireworks, setShowFireworks] = useState(false);
+  const numberOfWords = 20;
 
   // Inicjalizacja gry
   useEffect(() => {
-    // Mieszamy słowa i wybieramy losowo 5 z pełnej listy
-    const shuffled = [...allWordsList].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 20);
+    // Helper method to get random words from both lists
+    const selected = getRandomWords(numberOfWords);
     setWords(selected);
-
-    if (selected.length > 0) {
-      prepareWord(selected[0]);
-    }
+    prepareWord(selected[0]);
   }, []);
+
+  const getRandomWords = (count) => {
+    const rzShuffled = [...rzWordsList].sort(() => 0.5 - Math.random());
+    const zShuffled = [...zWordsList].sort(() => 0.5 - Math.random());
+    const rzNumberToTake = Math.floor(count / 2);
+    const zNumberToTake = count - rzNumberToTake;
+    return [...rzShuffled.slice(0, rzNumberToTake), ...zShuffled.slice(0, zNumberToTake)].sort(() => 0.5 - Math.random());
+  };
 
   // Przygotowanie słowa z pustym miejscem
   const prepareWord = (wordObj) => {
@@ -156,9 +95,7 @@ const PolishOrthographyGame = () => {
 
   // Restart gry
   const restartGame = () => {
-    // Mieszamy słowa i wybieramy losowo 5 z pełnej listy
-    const shuffled = [...allWordsList].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 20);
+    const selected = getRandomWords(numberOfWords);
 
     setWords(selected);
     setCurrentWordIndex(0);
