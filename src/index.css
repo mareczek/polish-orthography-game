@@ -2,6 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fireworks animation */
+.firework {
+  position: absolute;
+  width: var(--size, 5px);
+  height: var(--size, 5px);
+  border-radius: 50%;
+  background-color: var(--color, #ff0000);
+  box-shadow: 0 0 20px 5px var(--color, #ff0000);
+  animation: firework 2s ease-out infinite;
+  z-index: 100;
+}
+
+.firework::before,
+.firework::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--color, #ff0000);
+  box-shadow: 0 0 20px 5px var(--color, #ff0000);
+  animation: firework-particles 2s ease-out infinite;
+}
+
+.firework::before {
+  transform: translateX(-50px) translateY(-25px) scale(0.5);
+  animation-delay: 0.1s;
+}
+
+.firework::after {
+  transform: translateX(30px) translateY(40px) scale(0.3);
+  animation-delay: 0.2s;
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes firework-particles {
+  0% {
+    transform: translateX(0) translateY(0) scale(0.1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(calc(var(--tx, 50) * 1px)) translateY(calc(var(--ty, 50) * 1px)) scale(0.8);
+  }
+  100% {
+    transform: translateX(calc(var(--tx, 100) * 1px)) translateY(calc(var(--ty, 100) * 1px)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Keep existing animations */
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1) translate(var(--tw-translate-x), var(--tw-translate-y));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(var(--tw-translate-x), calc(var(--tw-translate-y) + 30px));
+  }
+}
+
+.animate-fade-out {
+  animation: fade-out 1.5s forwards;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
