@@ -158,7 +158,7 @@ const PolishOrthographyGame = () => {
   const restartGame = () => {
     // Mieszamy słowa i wybieramy losowo 5 z pełnej listy
     const shuffled = [...allWordsList].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 5);
+    const selected = shuffled.slice(0, 20);
 
     setWords(selected);
     setCurrentWordIndex(0);
