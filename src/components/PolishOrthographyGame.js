@@ -15,7 +15,7 @@ const PolishOrthographyGame = () => {
   const [rule, setRule] = useState("");
   const [incorrectWords, setIncorrectWords] = useState([]);
   const [showFireworks, setShowFireworks] = useState(false);
-  const numberOfWords = 20;
+  const numberOfWords = 4;
 
   // Inicjalizacja gry
   useEffect(() => {
@@ -172,6 +172,10 @@ const PolishOrthographyGame = () => {
                 <div className="text-green-600">Poprawne: {correctAnswers}</div>
                 <div className="text-red-600">Błędne: {wrongAnswers}</div>
               </div>
+
+              <div className="mt-6 text-center text-sm text-gray-500">
+                <p>Wybierz czy w zaznaczonym miejscu powinno być "rz" czy "ż"</p>
+              </div>
             </div>
           </>
         ) : (
@@ -208,10 +212,6 @@ const PolishOrthographyGame = () => {
             </button>
           </div>
         )}
-
-        <div className="mt-6 text-center text-sm text-gray-500">
-          <p>Wybierz czy w zaznaczonym miejscu powinno być "rz" czy "ż"</p>
-        </div>
       </div>
     </div>
   );
