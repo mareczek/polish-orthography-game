@@ -400,7 +400,7 @@ const zWordsList = [
   { word: "żel", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "żelatyna", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "żeliwo", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
-  { word: "żetom", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
+  { word: "żeton", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "żłobić", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "żołd", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "żółtaczka", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
