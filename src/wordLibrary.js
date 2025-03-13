@@ -331,7 +331,6 @@ const zWordsList = [
   { word: "pożegnanie", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "prażona", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "prażona - prażyć" },
   { word: "prażyć", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
-  { word: "przyjażnić", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "prężyć", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "różnica", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "różowy", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
