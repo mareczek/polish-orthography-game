@@ -89,6 +89,15 @@ const PolishOrthographyGame = () => {
       setFeedback(`Źle! Poprawna odpowiedź: ${currentWord.correctAnswer}`);
       setFeedbackColor("red");
       setRule(currentWord.rule);
+
+      // Show the word with the correct answer highlighted in red
+      const wordWithHighlight = currentWord.word.replace(
+        currentWord.correctAnswer === "rz" ? /rz/i : /ż/i,
+        match => `<span class="text-red-600 font-bold">${match}</span>`
+      );
+      setHighlightedWord(wordWithHighlight);
+      setShowHighlightedWord(true);
+
       setShowingFeedback(true);
 
       // Dodaj błędne słowo do listy
@@ -105,6 +114,7 @@ const PolishOrthographyGame = () => {
       prepareWord(words[nextIndex]);
       setFeedback("");
       setShowingFeedback(false);
+      setShowHighlightedWord(false);
     } else {
       // Sprawdzamy czy wynik jest wystarczająco dobry dla fajerwerków
       const score = correctAnswers + 1; // +1 bo właśnie dodaliśmy poprawną odpowiedź
