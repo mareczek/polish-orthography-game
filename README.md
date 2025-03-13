@@ -31,7 +31,7 @@ npm start
 
 ## GitHub Page
 
-For more details, visit the [GitHub repository](https://github.com/yourusername/word_game_rz_and_z).
+To play the game, visit the [GitHub repository](https://mareczek.github.io/word_game_rz_and_z/).
 
 ## License
 
