@@ -86,7 +86,7 @@ const PolishOrthographyGame = () => {
       }, 2000);
     } else {
       setWrongAnswers(prev => prev + 1);
-      setFeedback(`Źle! Poprawna odpowiedź: ${currentWord.correctAnswer}`);
+      setFeedback(`Ojjj, niedobrze! Poprawna odpowiedź: ${currentWord.correctAnswer}`);
       setFeedbackColor("red");
       setRule(currentWord.rule);
 
