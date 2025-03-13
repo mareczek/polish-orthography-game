@@ -65,6 +65,9 @@ const PolishOrthographyGame = () => {
 
   // Sprawdzenie odpowiedzi
   const checkAnswer = (answer) => {
+    // Prevent multiple answers for the same word
+    if (showingFeedback) return;
+
     const currentWord = words[currentWordIndex];
 
     if (answer === currentWord.correctAnswer) {
@@ -79,6 +82,7 @@ const PolishOrthographyGame = () => {
       );
       setHighlightedWord(wordWithHighlight);
       setShowHighlightedWord(true);
+      setShowingFeedback(true);
 
       // Przejście do następnego słowa po krótkim czasie
       setTimeout(() => {
@@ -235,12 +239,14 @@ const PolishOrthographyGame = () => {
                   <button
                     onClick={() => checkAnswer("rz")}
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors"
+                    disabled={showingFeedback}
                   >
                     rz
                   </button>
                   <button
                     onClick={() => checkAnswer("ż")}
                     className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors"
+                    disabled={showingFeedback}
                   >
                     ż
                   </button>
