@@ -191,16 +191,15 @@ const PolishOrthographyGame = () => {
           <>
             <div className="text-center mb-8">
               <p className="text-sm text-gray-600 mb-2">Słowo {currentWordIndex + 1} z {words.length}</p>
-              <div className="grid grid-cols-3 mb-4">
-                <div className="col-span-1"></div>
-                <div className="text-4xl font-bold text-center">
-                  {showHighlightedWord ? (
-                    <span dangerouslySetInnerHTML={{ __html: highlightedWord }} />
-                  ) : (
-                    displayWord
-                  )}
-                </div>
-                <div className="col-span-1 flex items-center justify-start">
+              <div className="flex justify-center items-center mb-4">
+                <div className="flex items-center">
+                  <div className="text-4xl font-bold">
+                    {showHighlightedWord ? (
+                      <span dangerouslySetInnerHTML={{ __html: highlightedWord }} />
+                    ) : (
+                      displayWord
+                    )}
+                  </div>
                   {speechSupported && (
                     <button
                       onClick={speakWord}
