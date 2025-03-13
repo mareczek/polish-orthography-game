@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/polish-orthography-game/static/css/main.01b9ac23.css",
-    "main.js": "/polish-orthography-game/static/js/main.7cbd2b15.js",
+    "main.js": "/polish-orthography-game/static/js/main.c60cf2e0.js",
     "index.html": "/polish-orthography-game/index.html",
     "main.01b9ac23.css.map": "/polish-orthography-game/static/css/main.01b9ac23.css.map",
-    "main.7cbd2b15.js.map": "/polish-orthography-game/static/js/main.7cbd2b15.js.map"
+    "main.c60cf2e0.js.map": "/polish-orthography-game/static/js/main.c60cf2e0.js.map"
   },
   "entrypoints": [
     "static/css/main.01b9ac23.css",
-    "static/js/main.7cbd2b15.js"
+    "static/js/main.c60cf2e0.js"
   ]
 }
