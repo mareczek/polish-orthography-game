@@ -17,6 +17,8 @@ const PolishOrthographyGame = () => {
   const [showFireworks, setShowFireworks] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
   const [displayContext, setDisplayContext] = useState("");
+  const [highlightedWord, setHighlightedWord] = useState("");
+  const [showHighlightedWord, setShowHighlightedWord] = useState(false);
   const numberOfWords = 20;
 
   // Inicjalizacja gry
@@ -50,6 +52,7 @@ const PolishOrthographyGame = () => {
     }
 
     setDisplayWord(processed);
+    setShowHighlightedWord(false);
 
     // Set context if available
     if (wordObj.context) {
@@ -68,10 +71,19 @@ const PolishOrthographyGame = () => {
       setCorrectAnswers(prev => prev + 1);
       setFeedback("Dobrze!");
       setFeedbackColor("green");
+
+      // Show the word with only the correct answer part highlighted
+      const wordWithHighlight = currentWord.word.replace(
+        answer === "rz" ? /rz/i : /ż/i,
+        match => `<span class="text-green-600 font-bold">${match}</span>`
+      );
+      setHighlightedWord(wordWithHighlight);
+      setShowHighlightedWord(true);
+
       // Przejście do następnego słowa po krótkim czasie
       setTimeout(() => {
         moveToNextWord();
-      }, 1000);
+      }, 2000);
     } else {
       setWrongAnswers(prev => prev + 1);
       setFeedback(`Źle! Poprawna odpowiedź: ${currentWord.correctAnswer}`);
@@ -123,6 +135,7 @@ const PolishOrthographyGame = () => {
     setShowFireworks(false);
     setFeedback("");
     setShowingFeedback(false);
+    setShowHighlightedWord(false);
     prepareWord(selected[0]);
   };
 
@@ -170,7 +183,13 @@ const PolishOrthographyGame = () => {
               <p className="text-sm text-gray-600 mb-2">Słowo {currentWordIndex + 1} z {words.length}</p>
               <div className="grid grid-cols-3 mb-4">
                 <div className="col-span-1"></div>
-                <div className="text-4xl font-bold text-center">{displayWord}</div>
+                <div className="text-4xl font-bold text-center">
+                  {showHighlightedWord ? (
+                    <span dangerouslySetInnerHTML={{ __html: highlightedWord }} />
+                  ) : (
+                    displayWord
+                  )}
+                </div>
                 <div className="col-span-1 flex items-center justify-start">
                   {speechSupported && (
                     <button
