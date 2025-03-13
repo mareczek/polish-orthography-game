@@ -56,7 +56,7 @@ const rzWordsList = [
   { word: "przyjaciel", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
   { word: "przykład", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
   { word: "burza", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "burza - burzliwy" },
-  { word: "morze", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "morze - morski" },
+  { word: "morze", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "morze - morski", context: "W te wakacje pojadę nad {word}" },
   { word: "górze", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "górze - góra" },
   { word: "tworzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "tworzyć - twór" },
   { word: "powtórzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "powtórzyć - powtór" },
@@ -111,7 +111,8 @@ const zWordsList = [
   { word: "pieniężny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "pieniężny - pieniądz" },
   { word: "potężny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "potężny - potęga" },
   { word: "świeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS },
-  { word: "jeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS }
+  { word: "jeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS },
+  { word: "może", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "może - mogę", context: "On {word} przyjść jutro na spotkanie" }
 ];
 
 export { rzWordsList, zWordsList };

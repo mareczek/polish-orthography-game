@@ -16,6 +16,7 @@ const PolishOrthographyGame = () => {
   const [incorrectWords, setIncorrectWords] = useState([]);
   const [showFireworks, setShowFireworks] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
+  const [displayContext, setDisplayContext] = useState("");
   const numberOfWords = 4;
 
   // Inicjalizacja gry
@@ -49,6 +50,14 @@ const PolishOrthographyGame = () => {
     }
 
     setDisplayWord(processed);
+
+    // Set context if available
+    if (wordObj.context) {
+      const formattedContext = wordObj.context.replace('{word}', processed);
+      setDisplayContext(formattedContext);
+    } else {
+      setDisplayContext("");
+    }
   };
 
   // Sprawdzenie odpowiedzi
@@ -136,7 +145,13 @@ const PolishOrthographyGame = () => {
     // Zatrzymaj poprzednie odtwarzanie
     window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(currentWord.word);
+    // If context is available, read the entire sentence
+    let textToSpeak = currentWord.word;
+    if (currentWord.context) {
+      textToSpeak = currentWord.context.replace('{word}', currentWord.word);
+    }
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.lang = 'pl-PL'; // Ustawienie języka na polski
     utterance.rate = 0.9; // Nieco wolniejsze tempo
 
@@ -171,6 +186,12 @@ const PolishOrthographyGame = () => {
                   )}
                 </div>
               </div>
+
+              {displayContext && (
+                <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                  <p className="text-gray-700">{displayContext}</p>
+                </div>
+              )}
 
               {feedback && (
                 <div className="mb-4">
