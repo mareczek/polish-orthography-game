@@ -462,7 +462,6 @@ const zWordsList = [
   { word: "różdżka", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "pudrowo-różowy", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "łóżko", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "łóżko - lęgać" },
-  { word: "karaluż", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "podłużny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "podłużny - długi" },
   { word: "drużba", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "drużba - druh" },
   { word: "przysiężny", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
