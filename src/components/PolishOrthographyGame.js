@@ -15,6 +15,7 @@ const PolishOrthographyGame = () => {
   const [rule, setRule] = useState("");
   const [incorrectWords, setIncorrectWords] = useState([]);
   const [showFireworks, setShowFireworks] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const numberOfWords = 4;
 
   // Inicjalizacja gry
@@ -23,6 +24,9 @@ const PolishOrthographyGame = () => {
     const selected = getRandomWords(numberOfWords);
     setWords(selected);
     prepareWord(selected[0]);
+
+    // Check if speech synthesis is supported
+    setSpeechSupported(!!window.speechSynthesis);
   }, []);
 
   const getRandomWords = (count) => {
@@ -86,9 +90,13 @@ const PolishOrthographyGame = () => {
       const percentage = Math.round((score / words.length) * 100);
 
       setGameEnded(true);
+      // Tylko pokazuj fajerwerki dla wyników 90% lub lepszych
       if (percentage >= 90) {
         console.log("Pokazuję fajerwerki! Wynik:", percentage, "%");
         setShowFireworks(true);
+      } else {
+        console.log("Brak fajerwerków. Wynik:", percentage, "%");
+        setShowFireworks(false);
       }
     }
   };
@@ -106,16 +114,33 @@ const PolishOrthographyGame = () => {
     setShowFireworks(false);
     setFeedback("");
     setShowingFeedback(false);
-
-    if (selected.length > 0) {
-      prepareWord(selected[0]);
-    }
+    prepareWord(selected[0]);
   };
 
   // Obliczanie procentu poprawnych odpowiedzi
   const calculatePercentage = () => {
     if (words.length === 0) return 0;
     return Math.round((correctAnswers / words.length) * 100);
+  };
+
+  // Funkcja do odczytania słowa na głos
+  const speakWord = () => {
+    if (!speechSupported) {
+      console.error("Speech synthesis not supported in this browser");
+      return;
+    }
+
+    const currentWord = words[currentWordIndex];
+    if (!currentWord) return;
+
+    // Zatrzymaj poprzednie odtwarzanie
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(currentWord.word);
+    utterance.lang = 'pl-PL'; // Ustawienie języka na polski
+    utterance.rate = 0.9; // Nieco wolniejsze tempo
+
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -128,7 +153,24 @@ const PolishOrthographyGame = () => {
           <>
             <div className="text-center mb-8">
               <p className="text-sm text-gray-600 mb-2">Słowo {currentWordIndex + 1} z {words.length}</p>
-              <div className="text-4xl font-bold mb-4">{displayWord}</div>
+              <div className="grid grid-cols-3 mb-4">
+                <div className="col-span-1"></div>
+                <div className="text-4xl font-bold text-center">{displayWord}</div>
+                <div className="col-span-1 flex items-center justify-start">
+                  {speechSupported && (
+                    <button
+                      onClick={speakWord}
+                      className="p-2 bg-blue-100 hover:bg-blue-200 rounded-full transition-colors ml-2"
+                      title="Posłuchaj słowa"
+                      aria-label="Posłuchaj słowa"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
 
               {feedback && (
                 <div className="mb-4">
@@ -184,11 +226,19 @@ const PolishOrthographyGame = () => {
             <p className="text-lg mb-2">Twój wynik: {correctAnswers} / {words.length}</p>
             <p className="text-xl font-bold mb-6">{calculatePercentage()}% poprawnych odpowiedzi</p>
 
-            {showFireworks && (
+            {calculatePercentage() >= 90 ? (
               <div className="mb-6">
                 <p className="text-xl text-green-600 font-bold">Gratulacje! Świetny wynik!</p>
               </div>
-            )}
+            ) : calculatePercentage() >= 70 ? (
+              <div className="mb-6">
+                <p className="text-xl text-green-600 font-bold">Dobry wynik!</p>
+              </div>
+            ) : calculatePercentage() > 0 ? (
+              <div className="mb-6">
+                <p className="text-xl text-orange-500 font-bold">Spróbuj jeszcze raz!</p>
+              </div>
+            ) : null}
 
             {incorrectWords.length > 0 && (
               <div className="mt-6 mb-8 text-left">
