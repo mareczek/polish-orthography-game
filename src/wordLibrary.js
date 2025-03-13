@@ -17,11 +17,13 @@ const Z_RULES = {
 };
 
 const rzWordsList = [
-  { word: "zaprzyjaźnić", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
+  { word: "zaprzyjaźnić", correctAnswer: "rz", rule: RZ_RULES.PREFIXES, example: "zaprzyjaźnić - przedrostek przy-" },
+  { word: "tchórz", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "tchórz - tchórzyć" },
   { word: "umorzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "umorzyć - mór" },
   { word: "towarzystwo", correctAnswer: "rz", rule: RZ_RULES.MEMORIZE },
   { word: "jarzębina", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS, example: "jarzębina - 'rz' po spółgłosce 'j'" },
   { word: "rzecz", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
+  { word: "jarzmo", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS, example: "jarzmo - 'rz' po spółgłosce 'j'" },
   { word: "rzeka", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R },
   { word: "rzut", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R },
   { word: "przyjaźń", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
@@ -59,7 +61,8 @@ const rzWordsList = [
   { word: "przygoda", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
   { word: "przyjaciel", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
   { word: "przykład", correctAnswer: "rz", rule: RZ_RULES.PREFIXES },
-  { word: "burza", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "burza - burzliwy" },
+  { word: "burza", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS, example: "burza - 'rz' po spółgłosce 'b'" },
+  { word: "burzyć", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS, example: "burzyć - 'rz' po spółgłosce 'b'" },
   { word: "morze", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "morze - morski", context: "W te wakacje pojadę nad {word}" },
   { word: "górze", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "górze - góra" },
   { word: "tworzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "tworzyć - twór" },
@@ -133,6 +136,7 @@ const rzWordsList = [
   { word: "mierzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "mierzyć - miara" },
   { word: "wierzba", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
   { word: "wierzch", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
+  { word: "wierzchołek", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
   { word: "wierzyć", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "wierzyć - wiara" },
   { word: "wierzenie", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "wierzenie - wiara" },
   { word: "wierzenica", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
@@ -147,6 +151,7 @@ const rzWordsList = [
   { word: "uderzenie", correctAnswer: "rz", rule: RZ_RULES.ALTERNATING_WITH_R, example: "uderzenie - uderzyć" },
   { word: "trzysta", correctAnswer: "rz", rule: RZ_RULES.NUMERALS },
   { word: "trzynaście", correctAnswer: "rz", rule: RZ_RULES.NUMERALS },
+  { word: "talerz", correctAnswer: "rz", rule: RZ_RULES.MEMORIZE },
   { word: "trzeci", correctAnswer: "rz", rule: RZ_RULES.NUMERALS },
   { word: "trzeba", correctAnswer: "rz", rule: RZ_RULES.MEMORIZE },
   { word: "trzask", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
@@ -213,6 +218,10 @@ const rzWordsList = [
   { word: "zgrzyt", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
   { word: "zgrzeszyć", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
   { word: "zgrzebło", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
+  { word: "korzyść", correctAnswer: "rz", rule: RZ_RULES.MEMORIZE },
+  { word: "zmierzch", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS },
+  { word: "kurz", correctAnswer: "rz", rule: RZ_RULES.MEMORIZE },
+  { word: "mistrz", correctAnswer: "rz", rule: RZ_RULES.AFTER_CONSONANTS, example: "mistrz - 'rz' po spółgłosce 't'" },
 ];
 
 const zWordsList = [
@@ -490,6 +499,7 @@ const zWordsList = [
   { word: "nożyczki", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "nożyczki - nóż" },
   { word: "położenie", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "położenie - lęgać" },
   { word: "położna", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "położna - lęgać" },
+  { word: "anyżek", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
 ];
 
 export { rzWordsList, zWordsList };
