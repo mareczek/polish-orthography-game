@@ -302,7 +302,7 @@ const zWordsList = [
   { word: "dłuższy", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "dłuższy - długi" },
   { word: "dłużny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "dłużny - dług" },
   { word: "dłużnik", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "dłużnik - dług" },
-  { word: "głożyna", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
+  { word: "głożyna", correctAnswer: "ż", rule: Z_RULES.MEMORIZE, context: "{word} jest rodzajem krzewu lub niewielkiego drzewa z rodziny szakłakowatych" },
   { word: "grożący", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "grożący - grozić" },
   { word: "jeż", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "jeżeli", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
