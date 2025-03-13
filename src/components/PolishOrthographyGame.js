@@ -17,7 +17,7 @@ const PolishOrthographyGame = () => {
   const [showFireworks, setShowFireworks] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(false);
   const [displayContext, setDisplayContext] = useState("");
-  const numberOfWords = 4;
+  const numberOfWords = 20;
 
   // Inicjalizacja gry
   useEffect(() => {
