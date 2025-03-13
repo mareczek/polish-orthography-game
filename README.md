@@ -31,7 +31,7 @@ npm start
 
 ## GitHub Page
 
-To play the game, visit the [GitHub repository](https://mareczek.github.io/word_game_rz_and_z/).
+To play the game, visit the [https://mareczek.github.io/polish-orthography-game](https://mareczek.github.io/polish-orthography-game).
 
 ## License
 
