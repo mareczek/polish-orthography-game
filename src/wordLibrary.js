@@ -271,7 +271,7 @@ const zWordsList = [
   { word: "pieniężny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "pieniężny - pieniądz" },
   { word: "potężny", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "potężny - potęga" },
   { word: "świeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS },
-  { word: "jeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS },
+  { word: "jeży", correctAnswer: "ż", rule: Z_RULES.ADJECTIVE_ENDINGS, context: "W ogrodzie znalazłem gniazdo {word}, które zrobiły sobie tam schronienie" },
   { word: "może", correctAnswer: "ż", rule: Z_RULES.ALTERNATING, example: "może - mogę", context: "On {word} przyjść jutro na spotkanie" },
   { word: "aż", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
   { word: "życie", correctAnswer: "ż", rule: Z_RULES.MEMORIZE },
